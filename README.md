@@ -1,8 +1,8 @@
-# deep_learning_homework
+# Long Short-Term Memory (LSTM) Cryptocurrency Model
 
-Start intro here...
+A LSTM model is a recurrent neural network (RNN) used for time series data with long time windows.  The LSTM-RNN predicts which values it needs to "remember" as it runs, allowing it to use data from long time periods without being overwhelmed with extraneous data.  
 
-![Fear & Greed Index](/images/crypto-fear-and-greed-index-2021-11-12)
+In this repository, I have used two datasets to build two LSTM models.  Both data sets contain information about Bitcoin.  One data set contains historic Fear & Greed Index values and the other data set contains historic closing price data.
 
 The Crypto Fear & Greed Index uses sentiment analysis from several data sources to score current feelings about Bitcoin and other large cryptocurrencies.  From [the Crypto Fear & Greed Index site](https://alternative.me/crypto/fear-and-greed-index/):
 
@@ -13,4 +13,14 @@ The Crypto Fear & Greed Index uses sentiment analysis from several data sources 
 
 >Therefore, we analyze the current sentiment of the Bitcoin market and crunch the numbers into a simple meter from 0 to 100. Zero means "Extreme Fear", while 100 means "Extreme Greed". See below for further information on our data sources.
 
-Add info about using closing prices here...
+The closing price data set is exactly what it sounds like - closing prices for Bitcoin over time.  In both LSTM models, the data sets are imported into Pandas and joined together.  For the FNG Predictor file, the FNG values are used as the features data.  For the Closing Predictor file, the closing prices are used as the features data.
+
+## Results
+
+I found that the LSTM model was not a very good fit when using the FNG index as the features data.  The mean squared error (MSE) is 0.3021 and the model appears to be overfitting the data:
+
+![FNG Plot](fng_plot.png)
+
+When the closing prices were used as the features data, the LSTM model performs well.  The MSE 0.0101, and the model appears to be a good a fit for the data:
+
+![Close Plot](close_plot.png)
