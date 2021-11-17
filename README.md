@@ -15,12 +15,16 @@ The Crypto Fear & Greed Index uses sentiment analysis from several data sources 
 
 The closing price data set is exactly what it sounds like - closing prices for Bitcoin over time.  In both LSTM models, the data sets are imported into Pandas and joined together.  For the FNG Predictor file, the FNG values are used as the features data.  For the Closing Predictor file, the closing prices are used as the features data.
 
-## Results
+### Results
 
-I found that the LSTM model was not a very good fit when using the FNG index as the features data.  The mean squared error (MSE) is 0.3021 and the model appears to be overfitting the data:
+I found that the LSTM model was not a very good fit when using the FNG index as the features data.  The mean squared error (MSE) is 0.1562 and the model appears to be overfitting the data:
 
 ![FNG Plot](fng_plot.png)
 
-When the closing prices were used as the features data, the LSTM model performs well.  The MSE 0.0101, and the model appears to be a good a fit for the data:
+When the closing prices were used as the features data, the LSTM model performs well.  The MSE 0.0332, and the model appears to be a good a fit for the data:
 
 ![Close Plot](close_plot.png)
+
+I experimented with adding an additional layer, changing the time window, and changing the number of epochs.  None of the changes I made seemed to help the model perform better when using the FNG Index.  The adjusting the epochs from an initial value of 10 to 20 did improve the performance of the model using closing prices.
+
+### Closing Thoughts
